@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../Design/app_theme.dart';
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:image_gallery_saver/image_gallery_saver.dart';
+
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_web_browser/flutter_web_browser.dart';
@@ -172,51 +172,7 @@ void didChangeDependencies(){
                         pullToRefreshController: pullToRefreshController,
                         //////////////////////////////////////////////////
                         // ignore: deprecated_member_use
-                        onDownloadStart: (controller, url) async {
-                          // dowfnloading a file in a webview application
-                          final tempDir = await getTemporaryDirectory();
-                          var finalpath =
-                              (await getExternalStorageDirectory())!.path;
-                          final path = '${tempDir.path}/' + finalpath + '.jpg';
-                          final pathpdf =
-                              '${tempDir.path}/' + finalpath + '.pdf';
-                          print("////////////////////////////////////");
-                          print("controller: $controller");
-                          print("url: $url");
-                          print((await getExternalStorageDirectory())!.path);
-                          print("tempDir: $tempDir");
-                          print("path: $path");
-                          print("pathpdf: $pathpdf");
-                          print("////////////////////////////////////");
-
-                          List<String> imagePathArr = url.toString().split(".");
-                          List<String> imagePathArr2 =
-                              url.toString().split("/");
-                          print("image's type  =  ${imagePathArr[3]}");
-                          print("image's type2  =  ${imagePathArr2[8]}");
-                          var typefile = imagePathArr[3];
-
-                          if (typefile == "jpg") {
-                            await Dio().download(url.toString(), path);
-                            await ImageGallerySaver.saveFile(path);
-
-                            await showDialog<String>(
-                              context: context,
-                              builder: (BuildContext context) => AlertDialog(
-                                title: Text('Download image successfully'),
-                              ),
-                            );
-                          }
-                          if (typefile == "pdf") {
-                           
-                            await showDialog<String>(
-                              context: context,
-                              builder: (BuildContext context) => AlertDialog(
-                                title: Text('Download File successfully'),
-                              ),
-                            );
-                          }
-                        },
+                       
 
                         onWebViewCreated: (controller) {
                           _webViewController = controller;

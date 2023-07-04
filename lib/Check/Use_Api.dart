@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/editable_text.dart';
 import 'package:http/http.dart' as http;
-import 'package:image_gallery_saver/image_gallery_saver.dart';
+
 import 'package:path_provider/path_provider.dart';
 
 import 'User_data.dart';
