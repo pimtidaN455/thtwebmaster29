@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1067366854568",
+    "project_id": "thtforwebmaster",
+    "storage_bucket": "thtforwebmaster.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1067366854568:android:b0005adf80b0b13c33779d",
+        "android_client_info": {
+          "package_name": "com.example.thtwebmaster29"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1067366854568-rp69j05atrneq61budf9njtgklpprcis.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANZa-xHuQZDsiW_yPZT9AWLt-m38cuxyM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1067366854568-rp69j05atrneq61budf9njtgklpprcis.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
