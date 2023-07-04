@@ -105,7 +105,6 @@ class _HomeState extends State<Home> {
   }
 }
 
-
 class HexColor extends Color {
   HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
   static int _getColorFromHex(String hexColor) {

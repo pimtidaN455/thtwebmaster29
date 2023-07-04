@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -32,14 +33,33 @@ class _AllWebState2 extends State<AllWeb2> {
   DateTime currentDate = DateTime.now();
   AnimationController? animationController;
   String? namewebwow;
+    Timer? _timer;
   // ดึงรูปมาโชว์ //
 
   @override
   void initState() {
     super.initState();
+    _startAutoUpdate(); 
+  }
+@override
+  void dispose() {
+    _stopAutoUpdate(); // หยุดการอัพเดตอัตโนมัติเมื่อวิดเจ็ตถูกทำลาย
+    super.dispose();
   }
 
-  _loadData() async {
+   void _startAutoUpdate() {
+    const duration = Duration(seconds: 10); // กำหนดระยะเวลาในการอัพเดต (เช่นทุก 10 วินาที)
+
+    _timer = Timer.periodic(duration, (timer) {
+      _updateWidget(); // เรียกใช้งาน _updateWidget() เมื่อต้องการอัพเดต Widget
+    });
+  }
+
+ void _stopAutoUpdate() {
+    _timer?.cancel(); // ยกเลิกการทำงานของ Timer ถ้ามีการอัพเดตอัตโนมัติที่กำลังทำงาน
+  }
+
+ void _loadData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     _controller2 = prefs.getStringList("cart");
     decodedMap22.clear();
@@ -58,9 +78,14 @@ class _AllWebState2 extends State<AllWeb2> {
     });
   }
 
+   void _updateWidget() {
+    setState(() {
+      _loadData();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    _loadData();
     return Expanded(
         child: Container(
             height: MediaQuery.of(context).size.height,
