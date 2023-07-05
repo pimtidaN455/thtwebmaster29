@@ -41,6 +41,7 @@ class _MainHomeScreenState extends State<MainHomeScreen2>   with TickerProviderS
   static var decodedMap3;
   static List decodedMap22 = [];
   DateTime currentDate = DateTime.now();
+  int notificationCount = 5;
   // ดึงรูปมาโชว์ //
 @override
 void didChangeDependencies(){
@@ -117,40 +118,14 @@ void didChangeDependencies(){
       child: Row(
         children: <Widget>[
           Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                Text(
-                  'Hi!',
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14,
-                    letterSpacing: 0.2,
-                    color: DesignCourseAppTheme.grey,
-                  ),
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  _FnameProfile.toString() + " " + _LnameProfile.toString(),
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 22,
-                    letterSpacing: 0.27,
-                    color: DesignCourseAppTheme.darkerText,
-                  ),
-                ),
-              ],
-            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[ 
+                 SizedBox(
+            width: 50,
           ),
-          SizedBox(
-            width: 15,
-          ),
-          Container(
+                 Container(
             width: 60,
             height: 60,
             child: ClipOval(
@@ -169,9 +144,48 @@ void didChangeDependencies(){
               ),
             ),
           ),
+          IconButton(
+            icon: Stack(
+              children: [
+                Icon(Icons.notifications),
+                if (notificationCount > 0)
+                  Positioned(
+                    top: 0,
+                    right: 0,
+                    child: Container(
+                      padding: EdgeInsets.all(2),
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        shape: BoxShape.circle,
+                      ),
+                      constraints: BoxConstraints(
+                        minWidth: 16,
+                        minHeight: 16,
+                      ),
+                      child: Text(
+                        notificationCount.toString(),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+            onPressed: () {
+              // จัดการเมื่อผู้ใช้คลิกที่ไอคอนแจ้งเตือน
+            },
+          ),
+              ],
+            ),
+          ),
           SizedBox(
             height: 80,
           ),
+           
         ],
       ),
     );
