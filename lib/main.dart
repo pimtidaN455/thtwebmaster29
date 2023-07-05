@@ -29,41 +29,37 @@ void main() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var statuslogin = prefs.getString("statuslogin");
 
-  runApp(MyApp(statuslogin: statuslogin));
+  runApp(Home(statuslogin: statuslogin));
 }
 
 class MyApp extends StatelessWidget {
   final String? statuslogin;
-
   const MyApp({Key? key, this.statuslogin}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: statuslogin == "success"
-          ? NavigationHomeScreen()
+          ? Home()
           : IntroductionAnimationScreen(),
     );
   }
 }
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
-
+  final String? statuslogin;
+  const Home({Key? key, this.statuslogin}) : super(key: key);
   @override
-  _HomeState createState() => _HomeState();
+  _HomeState createState() => _HomeState(statuslogin: statuslogin);
 }
 
 class _HomeState extends State<Home> {
-  String? statuslogin;
-  String? Firstname;
-  String? Lastname;
+   final String? statuslogin;
+  _HomeState({required this.statuslogin});
 
   @override
   void initState() {
     super.initState();
-    getStatusLogin();
     OneSignal.shared.setLogLevel(OSLogLevel.debug, OSLogLevel.none);
     OneSignal.shared.setAppId("8a484f83-b642-47a8-b231-74ed2e3611bc");
     getDeviceState();
@@ -85,14 +81,6 @@ class _HomeState extends State<Home> {
     super.didChangeDependencies();
   }
 
-  void getStatusLogin() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      statuslogin = prefs.getString("statuslogin");
-      Firstname = prefs.getString("firstname");
-      Lastname = prefs.getString("lastname");
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
