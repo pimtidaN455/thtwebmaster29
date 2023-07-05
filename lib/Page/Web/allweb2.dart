@@ -48,8 +48,7 @@ class _AllWebState2 extends State<AllWeb2> {
   }
 
    void _startAutoUpdate() {
-    const duration = Duration(seconds: 10); // กำหนดระยะเวลาในการอัพเดต (เช่นทุก 10 วินาที)
-
+    const duration = Duration(seconds: 1); // กำหนดระยะเวลาในการอัพเดต (เช่นทุก 10 วินาที)
     _timer = Timer.periodic(duration, (timer) {
       _updateWidget(); // เรียกใช้งาน _updateWidget() เมื่อต้องการอัพเดต Widget
     });

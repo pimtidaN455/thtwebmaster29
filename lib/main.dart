@@ -66,11 +66,13 @@ class _HomeState extends State<Home> {
   }
 
   void getDeviceState() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     var deviceState = await OneSignal.shared.getDeviceState();
     if (deviceState != null) {
       print('Device State: $deviceState');
       print("กรูีววว");
       print(deviceState.userId);
+      await prefs.setString("Player_ID", deviceState.userId.toString());
     } else {
       print('Failed to get device state.');
     }
