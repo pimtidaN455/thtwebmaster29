@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../Design/app_theme.dart';
+import 'Scan/Scanqr.dart';
 import 'drawer_user_controller.dart';
 import 'first_screen.dart';
-import 'loginweb_screen.dart';
+import 'Scan/loginweb_screen.dart';
 import 'notify_screen.dart';
 import 'home_drawer.dart';
 import '../Web/mainpage.dart';
@@ -71,7 +72,7 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
           break;
         case DrawerIndex.LOGINWEB:
           setState(() {
-            screenView = LoginWebScreen();
+            screenView = ScanQR();
           });
           break;
         default:

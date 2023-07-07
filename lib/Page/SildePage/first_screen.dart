@@ -12,6 +12,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_web_browser/flutter_web_browser.dart';
 
+import '../Web/notification.dart';
+
 class FirstScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -128,69 +130,7 @@ void didChangeDependencies(){
     );
   }
  Widget getAppBarUI() {
-    return Padding(
-      padding: const EdgeInsets.only(top: 8.0, left: 18, right: 18),
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                Text(
-                  'Hi!',
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14,
-                    letterSpacing: 0.2,
-                    color: DesignCourseAppTheme.grey,
-                  ),
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  _FnameProfile.toString() + " " + _LnameProfile.toString(),
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 22,
-                    letterSpacing: 0.27,
-                    color: DesignCourseAppTheme.darkerText,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
-            width: 15,
-          ),
-          Container(
-            width: 60,
-            height: 60,
-            child: ClipOval(
-              child: Material(
-                color: Colors.transparent,
-                child: Ink.image(
-                  image: _imageProfile == null
-                      ? AssetImage("assets/images/rabbit.jpg")
-                      //: AssetImage("assets/logojoblucky.png"),
-                      : FileImage(File(_imageProfile!)) as ImageProvider,
-                  fit: BoxFit.cover,
-                  width: 128,
-                  height: 128,
-                  child: InkWell(),
-                ),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 80,
-          ),
-        ],
-      ),
-    );
+   return NotiView();
   }
   
 
